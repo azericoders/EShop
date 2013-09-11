@@ -23,4 +23,16 @@ namespace EShop.Core
         public Guid CompanyId { get; set; }
         public virtual Company Company { get; set; }
     }
+
+    public class ShippinDetail
+    {
+        //<Summary>
+        //Fields...
+        //</Summary>
+        public Guid ShippingDetailId { get; set; }
+
+        // Fields for relationships
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+    }
 }
