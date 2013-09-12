@@ -16,6 +16,9 @@ namespace EShop.Core
 
         public decimal Price { get; set; }
 
+        public string Image { get; set; }
+
+        public string ThumbnialImage { get; set; }
 
         // Fields for relationships
         public Guid CategoryId { get; set; }

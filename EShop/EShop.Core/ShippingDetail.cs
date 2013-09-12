@@ -2,7 +2,7 @@
 
 namespace EShop.Core
 {
-    public class ShippinDetail
+    public class ShippingDetail
     {
         //<Summary>
         //Fields...
