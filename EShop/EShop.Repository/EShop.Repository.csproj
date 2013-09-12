@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CategoryManager\CategoryRepository.cs" />
+    <Compile Include="CategoryManager\ICategoryRepository.cs" />
+    <Compile Include="CompanyManager\CompanyRepository.cs" />
+    <Compile Include="CompanyManager\ICompanyRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="OrderLineManager\IOrderLineRepository.cs" />
+    <Compile Include="OrderLineManager\OrderLineRepository.cs" />
+    <Compile Include="OrderManager\IOrderRepository.cs" />
+    <Compile Include="OrderManager\OrderRepository.cs" />
+    <Compile Include="ProductManager\IProductRepository.cs" />
+    <Compile Include="ProductManager\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager\IUserRepository.cs" />
+    <Compile Include="UserManager\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.CoreAccess\EShop.CoreAccess.csproj">
+      <Project>{82417445-cf7b-4359-b4ec-9d86a0ec2b39}</Project>
+      <Name>EShop.CoreAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Core\EShop.Core.csproj">
+      <Project>{df58facc-bdcf-42eb-a679-d17103c3d275}</Project>
+      <Name>EShop.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

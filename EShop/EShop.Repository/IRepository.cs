@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EShop.Repository
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : IDisposable
     {
-        void Dispose();
         IQueryable<T> GetAll();
         void Save(T company);
         void Update(T company);
