@@ -7,6 +7,7 @@ namespace EShop.Core
         //<Summary>
         //Fields...
         //</Summary>
+
         public Guid CompanyId { get; set; }
 
         public string CompanyName { get; set; }
