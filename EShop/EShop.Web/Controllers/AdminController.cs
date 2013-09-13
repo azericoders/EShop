@@ -32,6 +32,21 @@ namespace EShop.Web.Controllers
             TempData["dashboard"] = "active";
             return View();
         }
+
+        public ActionResult User()
+        {
+            return View();
+        }
+
+        public ActionResult Message()
+        {
+            return View();
+        }
+
+        public ActionResult Product()
+        {
+            return View();
+        }
     }
 }
 
