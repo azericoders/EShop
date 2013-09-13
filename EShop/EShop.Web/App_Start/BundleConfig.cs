@@ -23,6 +23,12 @@ namespace EShop.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/LoginScript").Include("~/Scripts/libryjs/jquery-1.7.2.min.js",
+                "~/Scripts/libryjs/jquery-ui-1.8.21.custom.min.js",
+                "~/Scripts/libryjs/jquery.uploadify-3.1.min.js"
+                
+                ));
+
             bundles.Add(new StyleBundle("~/AdminContent/css").Include("~/Content/admin/bootstrap-cerulean.css",
                 "~/Content/admin/bootstrap-responsive.css",
                 "~/Content/admin/charisma-app.css",
@@ -41,6 +47,25 @@ namespace EShop.Web
                 "~/Content/admin/uniform.default.css",
                 "~/Content/admin/uploadify.css"));
 
+            bundles.Add(new StyleBundle("~/LoginContent/css").Include("~/Content/admin/bootstrap-cerulean.css",
+                 "~/Content/admin/bootstrap-responsive.css",
+                 "~/Content/admin/charisma-app.css"
+                 //"~/Content/admin/chosen.css",
+                 //"~/Content/admin/colorbox.css",
+                 //"~/Content/admin/elfinder.min.css",
+                 //"~/Content/admin/elfinder.theme.css",
+                 //"~/Content/admin/fullcalendar.css",
+                 //"~/Content/admin/fullcalendar.print.css",
+                 //"~/Content/admin/jquery.cleditor.css",
+                 //"~/Content/admin/jquery.iphone.toggle.css",
+                 //"~/Content/admin/jquery.noty.css",
+                 //"~/Content/admin/jquery-ui-1.8.21.custom.css",
+                 //"~/Content/admin/noty_theme_default.css",
+                 //"~/Content/admin/opa-icons.css",
+                 //"~/Content/admin/uniform.default.css",
+                 //"~/Content/admin/uploadify.css"
+               ));
+           
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",

@@ -8,7 +8,7 @@ namespace EShop.Core
         //<Summary>
         //Fields...
         //</Summary>
-
+        
         public Guid UserId { get; set; }
 
         [StringLength(15)]
