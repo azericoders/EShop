@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using EShop.Core;
 
 namespace EShop.CoreAccess
@@ -8,6 +9,7 @@ namespace EShop.CoreAccess
         public CategoryConfiguration()
         {
             HasKey(category => category.CategoryId);
+            Property(category => category.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

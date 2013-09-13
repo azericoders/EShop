@@ -33,6 +33,9 @@ namespace EShop.Infrastructure
                 : (IController)ninjectKernel.Get(controllerType);
         }
 
+        //<Summary>
+        // inject Repository classes to interfaces
+        //</Summary>
         private void AddBindings()
         {
 
