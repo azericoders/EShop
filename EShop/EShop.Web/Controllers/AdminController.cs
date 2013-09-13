@@ -12,18 +12,24 @@ namespace EShop.Web.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View(new LoginUser());
         }
 
         [HttpPost]
-        public ActionResult Index(LoginUser user)
+        public ActionResult Login(LoginUser user)
         {
             if (ModelState.IsValid)
             {
-                return View();
+                return RedirectToActionPermanent("DashBoard");
             }
+            return View();
+        }
+
+        public ActionResult DashBoard()
+        {
+            TempData["dashboard"] = "active";
             return View();
         }
     }

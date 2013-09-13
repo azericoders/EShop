@@ -21,24 +21,6 @@
             padding: 9px 0;
         }
     </style>
-    @* <link href="~/Content/admin/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="~/Content/admin/charisma-app.css" rel="stylesheet" />
-    <link href="~/Content/admin/chosen.css" rel="stylesheet" />
-    <link href="~/Content/admin/colorbox.css" rel="stylesheet" />
-    <link href="~/Content/admin/elfinder.min.css" rel="stylesheet" />
-    <link href="~/Content/admin/elfinder.theme.css" rel="stylesheet" />
-    <link href="~/Content/admin/fullcalendar.css" rel="stylesheet" />
-    <link href="~/Content/admin/fullcalendar.print.css" rel="stylesheet" />
-    <link href="~/Content/admin/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
-    <link href="~/Content/admin/jquery.cleditor.css" rel="stylesheet" />
-    <link href="~/Content/admin/jquery.iphone.toggle.css" rel="stylesheet" />
-    <link href="~/Content/admin/jquery.noty.css" rel="stylesheet" />
-    <link href="~/Content/admin/noty_theme_default.css" rel="stylesheet" />
-    <link href="~/Content/admin/opa-icons.css" rel="stylesheet" />
-    <link href="~/Content/admin/uniform.default.css" rel="stylesheet" />
-    <link href="~/Content/admin/uploadify.css" rel="stylesheet" />*@
-
-
     <!-- The fav icon -->
     <link rel="shortcut icon" href="img/favicon.ico">
 </head>
@@ -59,7 +41,7 @@
                     <div class="alert alert-info">
                         Zəhmət olmazsa istifadəçi adı və şifrə ilə daxil olun.
                     </div>
-                    @using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
+                    @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
                         <fieldset>
                             <div class="input-prepend" title="İstifadəçi adı" data-rel="tooltip">
