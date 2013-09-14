@@ -43,11 +43,15 @@ namespace EShop.Web.Controllers
             return View();
         }
 
-        public ActionResult Product()
+        public ActionResult Order()
         {
             return View();
         }
 
+        public ActionResult Product()
+        {
+            return View();
+        }
         public ActionResult Error404()
         {
             return View();
