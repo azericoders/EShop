@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EShop.Core
 {
@@ -15,6 +16,9 @@ namespace EShop.Core
 
         // Fields for relationships
         public Guid MainCategoryId { get; set; }
-        public virtual Category MainCategory { get; set; }
+        public Category MainCategory { get; set; }
+
+        public virtual ICollection<Category> ChildCategories { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

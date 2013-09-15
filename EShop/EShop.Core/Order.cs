@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EShop.Core
 {
@@ -7,17 +8,24 @@ namespace EShop.Core
         //<Summary>
         //Fields...
         //</Summary>
-        
+
         public Guid OrderId { get; set; }
+
+        public string OrderNumber { get; set; }
 
         public DateTime OrderDate { get; set; }
 
+        public bool IsWere { get; set; }// is completed
 
+        public decimal TotalAmount { get; set; }
         // Fields for relationships
-        public Guid ProductId { get; set; }
-        public Product Product { get; set; }
 
-        public Guid CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+
+        public Guid ShippingDetailId { get; set; }
+        public ShippingDetail ShippingDetail { get; set; }
+
+        public virtual ICollection<OrderLine> OrderLines { get; set; }
     }
 }

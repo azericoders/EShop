@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EShop.Core
 {
@@ -13,5 +14,12 @@ namespace EShop.Core
         public string CompanyName { get; set; }
 
         public string LogoFile { get; set; }
+
+        public bool IsBrand { get; set; }
+
+
+        // Fields for relationships
+        public virtual ICollection<Product> Products { get; set; }
+
     }
 }

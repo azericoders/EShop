@@ -438,6 +438,24 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.CoreAccess\EShop.CoreAccess.csproj">
+      <Project>{82417445-cf7b-4359-b4ec-9d86a0ec2b39}</Project>
+      <Name>EShop.CoreAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Core\EShop.Core.csproj">
+      <Project>{df58facc-bdcf-42eb-a679-d17103c3d275}</Project>
+      <Name>EShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Infrastructure\EShop.Infrastructure.csproj">
+      <Project>{e7ed00c8-bcb6-4635-8310-a8fddb0e7fdb}</Project>
+      <Name>EShop.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Repository\EShop.Repository.csproj">
+      <Project>{6d5f3199-d9a0-4a00-a655-37dc24967cf2}</Project>
+      <Name>EShop.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

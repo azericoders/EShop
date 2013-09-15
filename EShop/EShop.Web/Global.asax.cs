@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using EShop.CoreAccess;
+using EShop.Infrastructure;
 
 namespace EShop.Web
 {
@@ -22,6 +25,15 @@ namespace EShop.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EShopDbContext>());
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            using (EShopDbContext context = new EShopDbContext())
+            {
+                var ur = context.Users.Where(user => user.LoginName == "Elvin");
+            }
         }
     }
 }

@@ -43,7 +43,7 @@
                                 <i class="icon-edit icon-white"></i>
                                 Dəyiş                                            
                             </a>
-                            <a class="btn btn-danger" href="#">
+                            <a class="btn btn-danger" href="#Delete" role="button" data-toggle="modal" id="DeleteModal">
                                 <i class="icon-trash icon-white"></i>
                                 Sil
                             </a>
@@ -756,8 +756,8 @@
         <strong>Statusu:</strong> <span class="label label-success">Approved</span>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
+        <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+        <a href="#" class="btn btn-primary">Yadda saxla</a>
     </div>
 </div>
 
@@ -774,8 +774,6 @@
             <select>
                 <option value="volvo">Administrator</option>
                 <option value="saab">Simple</option>
-                @*<option value="mercedes">Mercedes</option>*@
-                @*<option value="audi">Audi</option>*@
             </select>
             <br />
             <strong>Statusu:</strong>
@@ -786,8 +784,27 @@
             </select>
         </div>
         <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Close</a>
-            <button class="btn btn-primary">Save changes</button>
+            <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+            <button class="btn btn-primary">Yadda saxla</button>
+        </div>
+    }
+</div>
+S
+<div class="modal hide fade" id="Delete">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>İstifadəçinin məlumatları</h3>
+    </div>
+    @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+    {
+        //Html.HiddenFor(user=>user.UserId)
+        <div class="modal-body">
+            <strong>Bu istifadəçini silmək istədiyinizdən əminsiniz...?</strong>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+            <button class="btn btn-danger"><i class="icon-trash icon-white"></i>Sil</button>
         </div>
     }
 </div>

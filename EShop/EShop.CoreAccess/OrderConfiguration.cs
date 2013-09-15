@@ -9,6 +9,7 @@ namespace EShop.CoreAccess
         public OrderConfiguration()
         {
             HasKey(order => order.OrderId);
+            //HasKey(order => order.ShippingDetailId);
             Property(order => order.OrderId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }

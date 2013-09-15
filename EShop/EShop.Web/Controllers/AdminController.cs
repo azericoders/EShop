@@ -47,13 +47,28 @@ namespace EShop.Web.Controllers
             return View("User");
         }
 
+        [HttpPost]
+        public ActionResult DeleteUser()
+        {
+            return View("User");
+        }
         #endregion
 
+        #region Messages
 
+        [HttpGet]
         public ActionResult Message()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult DeleteMessage()
+        {
+            return View("Message");
+        }
+
+        #endregion
 
         public ActionResult Order()
         {
