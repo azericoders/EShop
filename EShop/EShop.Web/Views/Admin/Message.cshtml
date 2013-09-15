@@ -35,7 +35,7 @@
                             <span class="label label-success">Active</span>
                         </td>*@
                         <td class="center">
-                            <a class="btn btn-success" href="#">
+                            <a class="btn btn-success" href="#View" role="button" id="ViewModal" data-toggle="modal">
                                 <i class="icon-zoom-in icon-white"></i>
                                 Göstər                                            
                             </a>
@@ -740,3 +740,23 @@
 </div>
 <!--/row-->
 
+<div class="modal hide fade" id="View">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>İstifadəçinin məlumatları</h3>
+    </div>
+    <div class="modal-body">
+        <a href="#">
+            <img src="http://i.stack.imgur.com/Kf7hG.jpg?s=128&amp;g=1" alt="Elvin" class="dashboard-avatar"></a>
+        <strong>Adı:</strong> <a href="#">Elvin
+        </a>
+        <br>
+        <strong>Tarixi:</strong> 17/05/2012<br>
+        <strong>Vəzifəsi</strong> Admin<br />
+        <strong>Statusu:</strong> <span class="label label-success">Approved</span>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+</div>
