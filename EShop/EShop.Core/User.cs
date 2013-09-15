@@ -21,16 +21,12 @@ namespace EShop.Core
         [StringLength(25)]
         public string Email { get; set; }
 
-        public Position Position { get; set; }
+        public PositionEnum Position { get; set; }
         public StatusEnum Status { get; set; }
+
+        public bool IsDelete { get; set; }
 
         // Fields for relationships
         public virtual ICollection<Order> Orders { get; set; }
-    }
-
-    public enum Position
-    {
-        Simple,
-        Admin
     }
 }

@@ -24,6 +24,8 @@ namespace EShop.Core
 
         public string ThumbnialImage { get; set; }
 
+        public bool IsDelete { get; set; }
+
         // Fields for relationships
         public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }

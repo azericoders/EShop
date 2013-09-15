@@ -12,6 +12,7 @@ namespace EShop.Core
 
         public decimal ProductPrice { get; set; }
 
+        public bool IsDelete { get; set; }
         // Fields for relationships
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

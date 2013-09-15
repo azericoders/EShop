@@ -17,7 +17,7 @@ namespace EShop.Core
 
         public bool IsBrand { get; set; }
 
-
+        public bool IsDelete { get; set; }
         // Fields for relationships
         public virtual ICollection<Product> Products { get; set; }
 
