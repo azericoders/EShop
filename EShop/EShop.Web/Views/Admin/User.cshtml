@@ -39,7 +39,7 @@
                                 <i class="icon-zoom-in icon-white"></i>
                                 Göstər                                            
                             </a>
-                            <a class="btn btn-info" href="#">
+                            <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
                                 <i class="icon-edit icon-white"></i>
                                 Dəyiş                                            
                             </a>
@@ -766,18 +766,28 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>İstifadəçinin məlumatları</h3>
     </div>
-    <div class="modal-body">
-        <a href="#">
-            <img src="http://i.stack.imgur.com/Kf7hG.jpg?s=128&amp;g=1" alt="Elvin" class="dashboard-avatar"></a>
-        <strong>Adı:</strong> <a href="#">Elvin
-        </a>
-        <br>
-        <strong>Tarixi:</strong> 17/05/2012<br>
-        <strong>Vəzifəsi</strong> Admin<br />
-        <strong>Statusu:</strong> <span class="label label-success">Approved</span>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
-    </div>
+    @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+    {
+        //Html.HiddenFor(user=>user.UserId)
+        <div class="modal-body">
+            <strong>Vəzifəsi</strong>
+            <select>
+                <option value="volvo">Administrator</option>
+                <option value="saab">Simple</option>
+                @*<option value="mercedes">Mercedes</option>*@
+                @*<option value="audi">Audi</option>*@
+            </select>
+            <br />
+            <strong>Statusu:</strong>
+            <select>
+                <option value="volvo">Aktiv</option>
+                <option value="saab">Ban edilib</option>
+                <option value="mercedes">Deactive</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <button class="btn btn-primary">Save changes</button>
+        </div>
+    }
 </div>

@@ -33,10 +33,22 @@ namespace EShop.Web.Controllers
             return View();
         }
 
+
+        #region User
+        [HttpGet]
         public ActionResult User()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult EditUser()
+        {
+            return View("User");
+        }
+
+        #endregion
+
 
         public ActionResult Message()
         {
