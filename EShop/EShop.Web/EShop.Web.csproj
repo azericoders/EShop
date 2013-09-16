@@ -131,6 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\OrderStatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,8 @@
     <Content Include="Content\admin\jquery.cleditor.css" />
     <Content Include="Content\admin\jquery.iphone.toggle.css" />
     <Content Include="Content\admin\jquery.noty.css" />
+    <Content Include="Content\admin\kendo.common.min.css" />
+    <Content Include="Content\admin\kendo.default.min.css" />
     <Content Include="Content\admin\noty_theme_default.css" />
     <Content Include="Content\admin\opa-icons.css" />
     <Content Include="Content\admin\uniform.default.css" />
@@ -384,6 +387,7 @@
     <Content Include="Scripts\libryjs\bootstrap-popover.js" />
     <Content Include="Scripts\libryjs\bootstrap-scrollspy.js" />
     <Content Include="Scripts\libryjs\bootstrap-tab.js" />
+    <Content Include="Scripts\libryjs\bootstrap-toggle.js" />
     <Content Include="Scripts\libryjs\bootstrap-tooltip.js" />
     <Content Include="Scripts\libryjs\bootstrap-tour.js" />
     <Content Include="Scripts\libryjs\bootstrap-transition.js" />
@@ -406,10 +410,12 @@
     <Content Include="Scripts\libryjs\jquery.flot.stack.js" />
     <Content Include="Scripts\libryjs\jquery.history.js" />
     <Content Include="Scripts\libryjs\jquery.iphone.toggle.js" />
+    <Content Include="Scripts\libryjs\jquery.js" />
     <Content Include="Scripts\libryjs\jquery.noty.js" />
     <Content Include="Scripts\libryjs\jquery.raty.min.js" />
     <Content Include="Scripts\libryjs\jquery.uniform.min.js" />
     <Content Include="Scripts\libryjs\jquery.uploadify-3.1.min.js" />
+    <Content Include="Scripts\libryjs\kendo.all.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

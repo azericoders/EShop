@@ -10,11 +10,21 @@ namespace EShop.Core
 
         public Guid ProductId { get; set; }
 
+        public string ProductNumber { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
 
+        public int Count { get; set; }
+
+        public int SoldCount { get; set; }
+
+        public int RestCount { get; set; }
+
         public decimal Price { get; set; }
+
+        public decimal PriceOfBuying { get; set; }
 
         public string Image { get; set; }
 

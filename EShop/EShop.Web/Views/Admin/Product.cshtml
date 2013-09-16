@@ -3,4 +3,49 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Mallar</h2>
+@section ProductKendoiCss
+{
+
+}
+@section ProductKendoiJs
+{
+    @*  <script src="~/Scripts/libryjs/kendo.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#cars-grid").kendoGrid();
+        });
+
+    </script>*@
+}
+
+
+<div style="width: auto;">
+    <table id="cars-grid">
+        <thead>
+            <tr>
+                <th data-field="name">Malın nömrəsi</th>
+                <th data-field="date">Adı</th>
+                <th data-filed="companyName">Şirkət</th>
+                <th data-field="count">Ümumi miqdarı</th>
+                <th data-filed="SoldCount">Satış miqdarı</th>
+                <th data-filed="RestCount">Qalıq miqdarı</th>
+                <th data-filed="Price">Qiyməti</th>
+                <th data-filed="PriceOfSale">Satış qiyməti</th>
+                <th data-filed="category">Kategoriyası</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NUM123</td>
+                <td class="center">Studio 1558</td>
+                <td>Dell Company</td>
+                <td>12</td>
+                <td>4</td>
+                <td>8</td>
+                <td>400 AZN</td>
+                <td>520 AZN</td>
+                <td>IT</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

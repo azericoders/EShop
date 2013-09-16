@@ -5,6 +5,11 @@ namespace EShop.Core
 {
     public class Order
     {
+        public Order()
+        {
+            this.IsWere = false;
+            this.IsDelete = false;
+        }
         //<Summary>
         //Fields...
         //</Summary>

@@ -69,12 +69,25 @@ namespace EShop.Web.Controllers
         }
 
         #endregion
-
+        #region Order
         public ActionResult Order()
         {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult ChangeOrderStatus(OrderStatusViewModel model)
+        {
+
+            return View("Order");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteOrder()
+        {
+            return View("Order");
+        }
+        #endregion
         public ActionResult Product()
         {
             return View();
@@ -83,6 +96,10 @@ namespace EShop.Web.Controllers
         {
             return View();
         }
+
+
+        //Tests
+      
     }
 }
 
