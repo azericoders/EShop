@@ -25,6 +25,11 @@ namespace EShop.Repository.OrderLineManager
             throw new NotImplementedException();
         }
 
+        public OrderLine GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(OrderLine company)
         {
             throw new NotImplementedException();
@@ -36,6 +41,11 @@ namespace EShop.Repository.OrderLineManager
         }
 
         public OrderLine DeleteById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }

@@ -25,6 +25,11 @@ namespace EShop.Repository.OrderManager
             throw new NotImplementedException();
         }
 
+        public Order GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Order company)
         {
             throw new NotImplementedException();
@@ -36,6 +41,11 @@ namespace EShop.Repository.OrderManager
         }
 
         public Order DeleteById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }

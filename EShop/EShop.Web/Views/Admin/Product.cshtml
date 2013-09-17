@@ -2,50 +2,132 @@
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="icon-user"></i>Mallar</h2>
+            <div class="box-icon">
+                <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Adı</th>
+                        <th>Şirkət</th>
+                        <th>Ümumi</th>
+                        <th>Satış</th>
+                        <th>Qalıq</th>
+                        <th>Qiyməti</th>
+                        <th>Satış qiyməti</th>
+                        <th>Kategoriyası</th>
+                        <th>Hadisələr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NUM123</td>
+                        <td class="center">Studio 1558</td>
+                        <td>Dell Company</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>8</td>
+                        <td>400 AZN</td>
+                        <td>520 AZN</td>
+                        <td>IT</td>
 
-@section ProductKendoiCss
-{
+                        <td class="center">
+                            <a href="#View" role="button" data-toggle="modal" id="ViewModal" class="btn btn-success">
+                                <i class="icon-zoom-in icon-white"></i>
+                                Göstər                                            
+                            </a>
+                            <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
+                                <i class="icon-edit icon-white"></i>
+                                Dəyiş                                            
+                            </a>
+                            <a class="btn btn-danger" href="#Delete" role="button" data-toggle="modal" id="DeleteModal">
+                                <i class="icon-trash icon-white"></i>
+                                Sil
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/span-->
 
-}
-@section ProductKendoiJs
-{
-    @*  <script src="~/Scripts/libryjs/kendo.all.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#cars-grid").kendoGrid();
-        });
+</div>
+<!--/row-->
+<div class="modal hide fade" id="View">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>İstifadəçinin məlumatları</h3>
+    </div>
+    <div class="modal-body">
+        <a href="#">
+            <img src="http://i.stack.imgur.com/Kf7hG.jpg?s=128&amp;g=1" alt="Elvin" class="dashboard-avatar"></a>
+        <strong>Adı:</strong> <a href="#">Elvin
+        </a>
+        <br>
+        <strong>Tarixi:</strong> 17/05/2012<br>
+        <strong>Vəzifəsi</strong> Admin<br />
+        <strong>Statusu:</strong> <span class="label label-success">Approved</span>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+        <a href="#" class="btn btn-primary">Yadda saxla</a>
+    </div>
+</div>
 
-    </script>*@
-}
+<div class="modal hide fade" id="Edit">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>İstifadəçinin məlumatları</h3>
+    </div>
+    @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+    {
+        //Html.HiddenFor(user=>user.UserId)
+        <div class="modal-body">
+            <strong>Vəzifəsi</strong>
+            <select>
+                <option value="volvo">Administrator</option>
+                <option value="saab">Simple</option>
+            </select>
+            <br />
+            <strong>Statusu:</strong>
+            <select>
+                <option value="volvo">Aktiv</option>
+                <option value="saab">Ban edilib</option>
+                <option value="mercedes">Deactive</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+            <button class="btn btn-primary">Yadda saxla</button>
+        </div>
+    }
+</div>
 
+<div class="modal hide fade" id="Delete">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>İstifadəçinin məlumatları</h3>
+    </div>
+    @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+    {
+        //Html.HiddenFor(user=>user.UserId)
+        <div class="modal-body">
+            <strong>Bu istifadəçini silmək istədiyinizdən əminsiniz...?</strong>
 
-<div style="width: auto;">
-    <table id="cars-grid">
-        <thead>
-            <tr>
-                <th data-field="name">Malın nömrəsi</th>
-                <th data-field="date">Adı</th>
-                <th data-filed="companyName">Şirkət</th>
-                <th data-field="count">Ümumi miqdarı</th>
-                <th data-filed="SoldCount">Satış miqdarı</th>
-                <th data-filed="RestCount">Qalıq miqdarı</th>
-                <th data-filed="Price">Qiyməti</th>
-                <th data-filed="PriceOfSale">Satış qiyməti</th>
-                <th data-filed="category">Kategoriyası</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>NUM123</td>
-                <td class="center">Studio 1558</td>
-                <td>Dell Company</td>
-                <td>12</td>
-                <td>4</td>
-                <td>8</td>
-                <td>400 AZN</td>
-                <td>520 AZN</td>
-                <td>IT</td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+            <button class="btn btn-danger"><i class="icon-trash icon-white"></i>Sil</button>
+        </div>
+    }
 </div>

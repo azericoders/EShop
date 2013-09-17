@@ -9,5 +9,6 @@ namespace EShop.Repository.UserManager
 {
     public interface IUserRepository : IRepository<User>
     {
+        User GetUserByNameAndPassword(string logname, string password);
     }
 }

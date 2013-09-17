@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EShop.Core;
+using EShop.Repository.UserManager;
 using EShop.Web.Models;
 
 namespace EShop.Web.Controllers
 {
     public class AdminController : Controller
     {
+        private IUserRepository userRepository;
+
+        public AdminController(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
         //
         // GET: /Admin/
 
@@ -22,23 +30,31 @@ namespace EShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToActionPermanent("DashBoard");
+                var dtUser = userRepository.GetUserByNameAndPassword(user.UserName, user.Password);
+                if (dtUser != null)
+                {
+                    Session["admin"] = userRepository.GetById(dtUser.UserId);
+                    return RedirectToActionPermanent("DashBoard");
+                }
             }
             return View();
         }
 
         public ActionResult DashBoard()
         {
-            TempData["dashboard"] = "active";
-            return View();
+            return Session["admin"] == null ? View("Login") : View();
         }
-
 
         #region User
         [HttpGet]
         public ActionResult User()
         {
-            return View();
+            if (Session["admin"] != null)
+            {
+                var users = userRepository.GetAll();
+                return View(users);
+            }
+            return View("Login");
         }
 
         [HttpPost]
@@ -52,6 +68,28 @@ namespace EShop.Web.Controllers
         {
             return View("User");
         }
+
+        [HttpGet]
+        public ActionResult CreateNew()
+        {
+            return Session["admin"] == null ? View("Login") : View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNew(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                    {
+                        LoginName = model.LoginName,
+                        Email = model.Email,
+                        Password = model.Password,
+                    };
+                userRepository.Save(user);
+            }
+            return View();
+        }
         #endregion
 
         #region Messages
@@ -59,7 +97,7 @@ namespace EShop.Web.Controllers
         [HttpGet]
         public ActionResult Message()
         {
-            return View();
+            return   Session["admin"] == null ? View("Login") : View();
         }
 
         [HttpPost]
@@ -72,7 +110,7 @@ namespace EShop.Web.Controllers
         #region Order
         public ActionResult Order()
         {
-            return View();
+            return   Session["admin"] == null ? View("Login") : View();
         }
 
         [HttpPost]
@@ -90,7 +128,7 @@ namespace EShop.Web.Controllers
         #endregion
         public ActionResult Product()
         {
-            return View();
+            return  Session["admin"] == null ? View("Login") : View();
         }
         public ActionResult Error404()
         {
@@ -99,7 +137,7 @@ namespace EShop.Web.Controllers
 
 
         //Tests
-      
+
     }
 }
 

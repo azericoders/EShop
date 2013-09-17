@@ -25,6 +25,11 @@ namespace EShop.Repository.CategoryManager
             throw new NotImplementedException();
         }
 
+        public Category GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Category company)
         {
             throw new NotImplementedException();
@@ -36,6 +41,11 @@ namespace EShop.Repository.CategoryManager
         }
 
         public Category DeleteById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }

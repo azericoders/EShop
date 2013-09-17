@@ -25,6 +25,11 @@ namespace EShop.Repository.CompanyManager
             throw new NotImplementedException();
         }
 
+        public Company GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Company company)
         {
             throw new NotImplementedException();
@@ -36,6 +41,11 @@ namespace EShop.Repository.CompanyManager
         }
 
         public Company DeleteById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }

@@ -83,7 +83,7 @@
 }
 
 .k-header, .k-grid-header, .k-toolbar, .k-dropdown-wrap, .k-picker-wrap, .k-numeric-wrap, .k-grouping-header, .k-pager-wrap, .k-textbox, .k-button, .k-draghandle, .k-autocomplete, .k-state-highlight, .k-tabstrip-items .k-item {
-    background-image: url('textures/highlight.png');
+    background-image: url('/Content/images/admin/textures/highlight.png');
     background-image: none,-webkit-linear-gradient(top,#f6f6f6 0,#eaeaea 100%);
     background-image: none,-moz-linear-gradient(top,#f6f6f6 0,#eaeaea 100%);
     background-image: none,-o-linear-gradient(top,#f6f6f6 0,#eaeaea 100%);
@@ -93,7 +93,7 @@
 }
 
 .k-widget.k-tooltip {
-    background-image: url('textures/highlight.png');
+    background-image: url('/Content/images/admin/textures/highlight.png');
 }
 
 .k-block, .k-header, .k-grid-header, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-button, .k-draghandle {

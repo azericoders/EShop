@@ -25,6 +25,11 @@ namespace EShop.Repository.ProductManager
             throw new NotImplementedException();
         }
 
+        public Product GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Product company)
         {
             throw new NotImplementedException();
@@ -36,6 +41,11 @@ namespace EShop.Repository.ProductManager
         }
 
         public Product DeleteById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }

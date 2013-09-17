@@ -1,10 +1,12 @@
-﻿@model dynamic
+﻿@model IEnumerable<EShop.Core.User>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<div>
+    <a href="@Url.Action("CreateNew")" class="btn btn-info">Yeni istifadəçi yarat</a>
+</div>
 <div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header well" data-original-title>
@@ -23,11 +25,36 @@
                         <th>Qeydiyyat tarixi</th>
                         <th>Vəzifəsi</th>
                         <th>Statusu</th>
-                        <th>Hadisələr</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.LoginName</td>
+                            <td class="center">@user.CreationDate.ToShortDateString()</td>
+                            <td class="center">@user.Position</td>
+                            <td class="center">
+                                <span class="label label-success">@user.Status</span>
+                            </td>
+                            <td class="center">
+                                <a href="#View" role="button" data-toggle="modal" id="ViewModal" class="btn btn-success">
+                                    <i class="icon-zoom-in icon-white"></i>
+                                    Göstər                                            
+                                </a>
+                                <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
+                                    <i class="icon-edit icon-white"></i>
+                                    Dəyiş                                            
+                                </a>
+                                <a class="btn btn-danger" href="#Delete" role="button" data-toggle="modal" id="DeleteModal">
+                                    <i class="icon-trash icon-white"></i>
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @*  <tr>
                         <td>David R</td>
                         <td class="center">2012/01/01</td>
                         <td class="center">Member</td>
@@ -48,7 +75,7 @@
                                 Sil
                             </a>
                         </td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
         </div>

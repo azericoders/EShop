@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/AdminContent/css")
-    @RenderSection("ProductKendoiCss", required: false)
+    @*   @RenderSection("ProductKendoiCss", required: false)*@
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -568,16 +568,19 @@
     <script src="~/Scripts/libryjs/jquery.history.js"></script>
     <!-- application script for Charisma demo -->
     <script src="~/Scripts/libryjs/charisma.js"></script>
-
+    @RenderSection("Scripts", required: false)
     @*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js" type="text/javascript"></script>*@
-    @RenderSection("ProductKendoiJs", required: false)
-    <script src="~/Scripts/libryjs/kendo.all.min.js"></script>
+    @*   @RenderSection("ProductKendoiJs", required: false)*@
+    @*<script src="~/Scripts/libryjs/kendo.all.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#cars-grid").kendoGrid({
-                sortable: true
+                sortable: true,
+                pageable: true,
+                dataSource: { pageSize: 5 },
+                height: 210
             });
         });
-    </script>
+    </script>*@
 </body>
 </html>
