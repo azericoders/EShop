@@ -10,19 +10,17 @@ namespace EShop.Repository.OrderManager
 {
     public class OrderRepository : IOrderRepository
     {
-        EShopDbContext context = new EShopDbContext();
+        EShopDbContext _context = new EShopDbContext();
         public void Dispose()
         {
-            if (context != null)
-            {
-                context.Dispose();
-                context = null;
-            }
+            if (_context == null) return;
+            _context.Dispose();
+            _context = null;
         }
 
         public IQueryable<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Orders;
         }
 
         public Order GetById(Guid id)

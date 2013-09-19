@@ -10,14 +10,12 @@ namespace EShop.Repository.CompanyManager
 {
     public class CompanyRepository : ICompanyRepository
     {
-        EShopDbContext context = new EShopDbContext();
+        EShopDbContext _context = new EShopDbContext();
         public void Dispose()
         {
-            if (context != null)
-            {
-                context.Dispose();
-                context = null;
-            }
+            if (_context == null) return;
+            _context.Dispose();
+            _context = null;
         }
 
         public IQueryable<Company> GetAll()

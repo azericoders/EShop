@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EShop.Core.Order>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Aktivliyi</h3>
+</div>
+<div class="modal-body">
+    <div class="box-content">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>Sifarişin tarixi</th>
+                    <th>Sifarişin nömrəsi</th>
+                    <th>Ümumi məbləğ</th>
+                    <th>Tamamlanıbmı?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td class="center">@order.OrderDate</td>
+                        <td class="center">@order.OrderNumber</td>
+                        <td>@order.TotalAmount AZN</td>
+                        <td>
+                            @if (order.IsWere)
+                            {
+                                <span class="label label-success">Bəli</span>
+                            }
+                            else
+                            {
+                                <span class="label label-warning">Xeyr</span>
+                            }
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td class="center">2012/01/01</td>
+                    <td class="center">NUM123</td>
+                    <td>120 AZN</td>
+                    <td><span class="label label-success">Bəli</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Bağla</a>
+    <a href="#" class="btn btn-primary">Yadda saxla</a>
+</div>

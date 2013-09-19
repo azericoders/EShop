@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CategoryConfiguration.cs" />
     <Compile Include="EShopDbContext.cs" />
+    <Compile Include="MessageConfiguration.cs" />
     <Compile Include="UserConfiguration.cs" />
     <Compile Include="CompanyConfiguration.cs" />
     <Compile Include="OrderConfiguration.cs" />

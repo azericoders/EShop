@@ -47,6 +47,8 @@
     <Compile Include="CompanyManager\CompanyRepository.cs" />
     <Compile Include="CompanyManager\ICompanyRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="MessageManager\IMessageRepository.cs" />
+    <Compile Include="MessageManager\MessageRepository.cs" />
     <Compile Include="OrderLineManager\IOrderLineRepository.cs" />
     <Compile Include="OrderLineManager\OrderLineRepository.cs" />
     <Compile Include="OrderManager\IOrderRepository.cs" />

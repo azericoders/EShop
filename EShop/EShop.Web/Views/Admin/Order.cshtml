@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model IEnumerable<EShop.Core.Order>
 
 @{
     ViewBag.Title = "title";
@@ -28,27 +28,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>David R</td>
-                        <td class="center">2012/01/01</td>
-                        <td class="center">NUM123</td>
-                        <td>120 AZN</td>
-                        <td><span class="label label-success">Bəli</span></td>
-                        <td class="center">
-                            <a href="#View" role="button" data-toggle="modal" id="ViewModal" class="btn btn-success">
-                                <i class="icon-zoom-in icon-white"></i>
-                                Ətraflı                                            
-                            </a>
-                            <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
-                                <i class="icon-edit icon-white"></i>
-                                Statusu dəyiş                                            
-                            </a>
-                            <a class="btn btn-danger" href="#Delete" role="button" data-toggle="modal" id="DeleteModal">
-                                <i class="icon-trash icon-white"></i>
-                                Sil
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>David R</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">NUM123</td>
+                            <td>120 AZN</td>
+                            <td><span class="label label-success">Bəli</span></td>
+                            <td class="center">
+                                <a href="#View" role="button" data-toggle="modal" id="ViewModal" class="btn btn-success">
+                                    <i class="icon-zoom-in icon-white"></i>
+                                    Ətraflı                                            
+                                </a>
+                                <div class="modal hide fade" id="View">
+                                    @Html.Partial("_OrderLine", order.OrderLines)
+                                </div>
+                                <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
+                                    <i class="icon-edit icon-white"></i>
+                                    Statusu dəyiş                                            
+                                </a>
+                                <a class="btn btn-danger" href="#Delete" role="button" data-toggle="modal" id="DeleteModal">
+                                    <i class="icon-trash icon-white"></i>
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -57,56 +63,7 @@
 
 </div>
 <!--/row-->
-<div class="modal hide fade" id="View">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Sifariş xətləri</h3>
-    </div>
-    <div class="modal-body">
-        <div class="box-content">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Məhsulun adı</th>
-                        <th>Nömrə</th>
-                        <th>Kateqoriya</th>
-                        <th>Qitməti</th>
-                        <th>Sayı</th>
-                        <th>Məbləğ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Muhammad Usman</td>
-                        <td>NUM345</td>
-                        <td class="center">Member</td>
-                        <td class="center">120 AZN</td>
-                        <td class="center">
-                            <span class="label label-success">2</span>
-                        </td>
-                        <td>240 AZN
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Muhammad Usman</td>
-                        <td>NUM345</td>
-                        <td class="center">Member</td>
-                        <td class="center">120 AZN</td>
-                        <td class="center">
-                            <span class="label label-success">2</span>
-                        </td>
-                        <td>240 AZN
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Bağla</a>
-    </div>
-</div>
 <div class="modal hide fade" id="Edit">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -139,7 +96,7 @@
 <div class="modal hide fade" id="Delete">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>İstifadəçinin məlumatları</h3>
+        <h3>Sifarişin silinməsi</h3>
     </div>
     @using (Html.BeginForm("DeleteOrder", "Admin", FormMethod.Post))
     {

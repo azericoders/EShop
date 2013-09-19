@@ -1,8 +1,9 @@
-﻿@model dynamic
+﻿@model IEnumerable<EShop.Core.Message>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var index = 0;
 }
 
 <div class="row-fluid sortable">
@@ -21,31 +22,34 @@
                     <tr>
                         <th>Göndərən</th>
                         <th>Göndərilmə tarixi</th>
-                        <th>Məzmunu</th>
-                        @*<th>Statusu</th>*@
                         <th>Hadisələr</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>David R</td>
-                        <td class="center">2012/01/01</td>
-                        <td class="center">@Html.ActionLink("Məzmun", "Error404", "Admin")</td>
-                        @* <td class="center">
-                            <span class="label label-success">Active</span>
-                        </td>*@
-                        <td class="center">
-                            <a class="btn btn-success" href="#View" role="button" id="ViewModal" data-toggle="modal">
-                                <i class="icon-zoom-in icon-white"></i>
-                                Göstər                                            
-                            </a>
-
-                            <a class="btn btn-danger" href="#Delete" role="button" id="EditModal" data-toggle="modal">
-                                <i class="icon-trash icon-white"></i>
-                                Sil
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach (var message in Model)
+                    {
+                        index++;
+                        <tr>
+                            <td>@message.User.LoginName</td>
+                            <td class="center">@message.DeliveredDate</td>
+                            <td class="center">
+                                <a class="btn btn-success" href="#View_@index" role="button" id="ViewModal" data-toggle="modal">
+                                    <i class="icon-zoom-in icon-white"></i>
+                                    Məzmunu                                            
+                                </a>
+                                <div class="modal hide fade" id="View_@index">
+                                    @Html.Partial("_MessageContent", message)
+                                </div>
+                                <a class="btn btn-danger" href="#Delete_@index" role="button" id="EditModal" data-toggle="modal">
+                                    <i class="icon-trash icon-white"></i>
+                                    Sil
+                                </a>
+                                <div class="modal hide fade" id="Delete_@index">
+                                    @Html.Partial("_DeleteMessage", message)
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -54,36 +58,3 @@
 
 </div>
 <!--/row-->
-
-<div class="modal hide fade" id="View">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>İstifadəçinin məlumatları</h3>
-    </div>
-    <div class="modal-body">
-        Burada Ismariclar olacaq....
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Bağla</a>
-        <a href="#" class="btn btn-primary">Yadda saxla</a>
-    </div>
-</div>
-
-<div class="modal hide fade" id="Delete">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>İstifadəçinin məlumatları</h3>
-    </div>
-    @using (Html.BeginForm("DeleteMessage", "Admin", FormMethod.Post))
-    {
-        //Html.HiddenFor(user=>user.UserId)
-        <div class="modal-body">
-            <strong>Bu ismarıcı silmək istədiyinizdən əminsiniz...?</strong>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Bağla</a>
-            <button class="btn btn-danger"><i class="icon-trash icon-white"></i>Sil</button>
-        </div>
-    }
-</div>

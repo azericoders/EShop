@@ -12,34 +12,33 @@ namespace EShop.Repository.UserManager
 {
     public class UserRepository : IUserRepository
     {
-        EShopDbContext context = new EShopDbContext();
+        EShopDbContext _context = new EShopDbContext();
+
         public void Dispose()
         {
-            if (context != null)
-            {
-                context.Dispose();
-                context = null;
-            }
+            if (_context == null) return;
+            _context.Dispose();
+            _context = null;
         }
 
         public IQueryable<User> GetAll()
         {
-            return context.Users;
+            return _context.Users.Where(user => user.IsDelete == false);
         }
 
         public User GetById(Guid id)
         {
-            return context.Users.Find(id);
+            return _context.Users.Find(id);
         }
 
         public User GetUserByNameAndPassword(string logname, string password)
         {
-            return context.Users.SingleOrDefault(user => user.LoginName == logname && user.Password == password);
+            return _context.Users.SingleOrDefault(user => user.LoginName == logname && user.Password == password);
         }
 
         public void Save(User user)
         {
-            context.Users.Add(user);
+            _context.Users.Add(user);
             SaveChanges();
         }
 
@@ -50,14 +49,18 @@ namespace EShop.Repository.UserManager
 
         public User DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Find(id);
+            user.IsDelete = true;
+            SaveChanges();
+
+            return user;
         }
 
         public void SaveChanges()
         {
             //try
             //{
-            context.SaveChanges();
+            _context.SaveChanges();
             //}
             //catch (DbEntityValidationException dbEx)
             //{

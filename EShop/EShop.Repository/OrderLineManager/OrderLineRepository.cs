@@ -13,11 +13,9 @@ namespace EShop.Repository.OrderLineManager
         EShopDbContext context = new EShopDbContext();
         public void Dispose()
         {
-            if (context != null)
-            {
-                context.Dispose();
-                context = null;
-            }
+            if (context == null) return;
+            context.Dispose();
+            context = null;
         }
 
         public IQueryable<OrderLine> GetAll()

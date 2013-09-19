@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using EShop.Core;
 using EShop.CoreAccess;
 
-namespace EShop.Repository.ProductManager
+namespace EShop.Repository.MessageManager
 {
-    public class ProductRepository : IProductRepository
+    public class MessageRepository : IMessageRepository
     {
         EShopDbContext _context = new EShopDbContext();
+
         public void Dispose()
         {
             if (_context == null) return;
@@ -18,27 +19,27 @@ namespace EShop.Repository.ProductManager
             _context = null;
         }
 
-        public IQueryable<Product> GetAll()
+        public IQueryable<Message> GetAll()
+        {
+            return _context.Messages.Where(message => message.IsDelete == true);
+        }
+
+        public Message GetById(Guid id)
+        {
+            return _context.Messages.Find(id);
+        }
+
+        public void Save(Message company)
         {
             throw new NotImplementedException();
         }
 
-        public Product GetById(Guid id)
+        public void Update(Message company)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Product company)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Product company)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product DeleteById(Guid id)
+        public Message DeleteById(Guid id)
         {
             throw new NotImplementedException();
         }

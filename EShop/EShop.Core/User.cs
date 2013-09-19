@@ -38,5 +38,7 @@ namespace EShop.Core
 
         // Fields for relationships
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

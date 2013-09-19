@@ -16,7 +16,7 @@ namespace EShop.CoreAccess
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,6 +28,7 @@ namespace EShop.CoreAccess
             modelBuilder.Configurations.Add(new OrderLineConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new MessageConfiguration());
         }
     }
 }

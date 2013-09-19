@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Core;
+using EShop.Repository.OrderManager;
 using EShop.Repository.UserManager;
 using EShop.Web.Models;
 
@@ -12,10 +13,12 @@ namespace EShop.Web.Controllers
     public class AdminController : Controller
     {
         private IUserRepository userRepository;
+        private IOrderRepository orderRepository;
 
-        public AdminController(IUserRepository userRepository)
+        public AdminController(IUserRepository userRepository, IOrderRepository orderRepository)
         {
             this.userRepository = userRepository;
+            this.orderRepository = orderRepository;
         }
         //
         // GET: /Admin/
@@ -64,9 +67,10 @@ namespace EShop.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteUser()
+        public ActionResult DeleteUser(User user)
         {
-            return View("User");
+            userRepository.DeleteById(user.UserId);
+            return RedirectToActionPermanent("User");
         }
 
         [HttpGet]
@@ -87,6 +91,7 @@ namespace EShop.Web.Controllers
                         Password = model.Password,
                     };
                 userRepository.Save(user);
+                RedirectToActionPermanent("User");
             }
             return View();
         }
@@ -97,7 +102,7 @@ namespace EShop.Web.Controllers
         [HttpGet]
         public ActionResult Message()
         {
-            return   Session["admin"] == null ? View("Login") : View();
+            return Session["admin"] == null ? View("Login") : View();
         }
 
         [HttpPost]
@@ -107,10 +112,12 @@ namespace EShop.Web.Controllers
         }
 
         #endregion
+
         #region Order
         public ActionResult Order()
         {
-            return   Session["admin"] == null ? View("Login") : View();
+
+            return Session["admin"] == null ? View("Login") : View(orderRepository.GetAll());
         }
 
         [HttpPost]
@@ -128,7 +135,7 @@ namespace EShop.Web.Controllers
         #endregion
         public ActionResult Product()
         {
-            return  Session["admin"] == null ? View("Login") : View();
+            return Session["admin"] == null ? View("Login") : View();
         }
         public ActionResult Error404()
         {
