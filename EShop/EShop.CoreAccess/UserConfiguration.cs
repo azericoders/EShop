@@ -17,4 +17,15 @@ namespace EShop.CoreAccess
             Property(user => user.UserId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
+
+    public class ShippingDetailConfiguration : EntityTypeConfiguration<ShippingDetail>
+    {
+        public ShippingDetailConfiguration()
+        {
+            HasKey(shoppindetail => shoppindetail.ShippingDetailId);
+            Property(shippingDetail => shippingDetail.ShippingDetailId)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+        }
+    }
 }

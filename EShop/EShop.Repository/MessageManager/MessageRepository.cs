@@ -21,7 +21,7 @@ namespace EShop.Repository.MessageManager
 
         public IQueryable<Message> GetAll()
         {
-            return _context.Messages.Where(message => message.IsDelete == true);
+            return _context.Messages;
         }
 
         public Message GetById(Guid id)

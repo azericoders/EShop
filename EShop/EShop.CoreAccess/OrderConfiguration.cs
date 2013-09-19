@@ -11,6 +11,7 @@ namespace EShop.CoreAccess
             HasKey(order => order.OrderId);
             //HasKey(order => order.ShippingDetailId);
             Property(order => order.OrderId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            HasRequired(order => order.ShippingDetail).WithOptional(shippingDetail => shippingDetail.Order);
         }
     }
 }

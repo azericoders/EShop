@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Routing;
 using EShop.Repository.CategoryManager;
 using EShop.Repository.CompanyManager;
+using EShop.Repository.MessageManager;
 using EShop.Repository.OrderLineManager;
 using EShop.Repository.OrderManager;
 using EShop.Repository.ProductManager;
@@ -45,6 +46,7 @@ namespace EShop.Infrastructure
             ninjectKernel.Bind<IOrderLineRepository>().To<OrderLineRepository>();
             ninjectKernel.Bind<IProductRepository>().To<ProductRepository>();
             ninjectKernel.Bind<IUserRepository>().To<UserRepository>();
+            ninjectKernel.Bind<IMessageRepository>().To<MessageRepository>();
         }
     }
 }

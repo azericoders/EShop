@@ -9,7 +9,7 @@ namespace EShop.Core
         //Fields...
         //</Summary>
 
-        //public Guid ShippingDetailId { get; set; }
+        public Guid ShippingDetailId { get; set; }
 
         public bool IsWere { get; set; }// is completed
 
@@ -26,8 +26,8 @@ namespace EShop.Core
         public string City { get; set; }
 
         // Fields for relationships
-        //public Guid OrderId { get; set; }
-        //public Order Order { get; set; }
+        public Guid OrderId { get; set; }
+        public Order Order { get; set; }
 
         //public virtual ICollection<Order> Orders { get; set; }
 

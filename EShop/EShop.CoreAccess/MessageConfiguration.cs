@@ -15,6 +15,7 @@ namespace EShop.CoreAccess
         {
             this.HasKey(message => message.MessageId);
             this.Property(message => message.MessageId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.HasRequired(message => message.User).WithMany(user => user.Messages);
         }
     }
 }
