@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Core;
+using EShop.Repository.MessageManager;
 using EShop.Repository.OrderManager;
 using EShop.Repository.UserManager;
 using EShop.Web.Models;
@@ -12,17 +13,20 @@ namespace EShop.Web.Controllers
 {
     public class AdminController : Controller
     {
-        private IUserRepository userRepository;
-        private IOrderRepository orderRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IOrderRepository _orderRepository;
+        private IMessageRepository _messageRepository;
 
-        public AdminController(IUserRepository userRepository, IOrderRepository orderRepository)
+        public AdminController(IUserRepository userRepository, IOrderRepository orderRepository, IMessageRepository messageRepository)
         {
-            this.userRepository = userRepository;
-            this.orderRepository = orderRepository;
+            this._userRepository = userRepository;
+            this._orderRepository = orderRepository;
+            this._messageRepository = messageRepository;
         }
         //
         // GET: /Admin/
 
+        #region Login
         public ActionResult Login()
         {
             return View(new LoginUser());
@@ -33,28 +37,29 @@ namespace EShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dtUser = userRepository.GetUserByNameAndPassword(user.UserName, user.Password);
+                var dtUser = _userRepository.GetUserByNameAndPassword(user.UserName, user.Password);
                 if (dtUser != null)
                 {
-                    Session["admin"] = userRepository.GetById(dtUser.UserId);
+                    Session["admin"] = _userRepository.GetById(dtUser.UserId);
                     return RedirectToActionPermanent("DashBoard");
                 }
             }
             return View();
         }
 
+        #endregion
+
         public ActionResult DashBoard()
         {
             return Session["admin"] == null ? View("Login") : View();
         }
-
         #region User
         [HttpGet]
-        public ActionResult User()
+        public new ActionResult User()
         {
             if (Session["admin"] != null)
             {
-                var users = userRepository.GetAll();
+                var users = _userRepository.GetAll();
                 return View(users);
             }
             return View("Login");
@@ -69,7 +74,7 @@ namespace EShop.Web.Controllers
         [HttpPost]
         public ActionResult DeleteUser(User user)
         {
-            userRepository.DeleteById(user.UserId);
+            _userRepository.DeleteById(user.UserId);
             return RedirectToActionPermanent("User");
         }
 
@@ -80,7 +85,7 @@ namespace EShop.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNew(RegisterViewModel model)
+        public ActionResult CreateNewUser(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +95,7 @@ namespace EShop.Web.Controllers
                         Email = model.Email,
                         Password = model.Password,
                     };
-                userRepository.Save(user);
+                _userRepository.Save(user);
                 RedirectToActionPermanent("User");
             }
             return View();
@@ -102,12 +107,13 @@ namespace EShop.Web.Controllers
         [HttpGet]
         public ActionResult Message()
         {
-            return Session["admin"] == null ? View("Login") : View();
+            return Session["admin"] == null ? View("Login") : View(_messageRepository.GetAll().Where(message => message.IsDelete == false));
         }
 
         [HttpPost]
-        public ActionResult DeleteMessage()
+        public ActionResult DeleteMessage(Guid messageId)
         {
+            _messageRepository.DeleteById(messageId);
             return View("Message");
         }
 
@@ -117,7 +123,7 @@ namespace EShop.Web.Controllers
         public ActionResult Order()
         {
 
-            return Session["admin"] == null ? View("Login") : View(orderRepository.GetAll());
+            return Session["admin"] == null ? View("Login") : View(_orderRepository.GetAll());
         }
 
         [HttpPost]
@@ -133,10 +139,15 @@ namespace EShop.Web.Controllers
             return View("Order");
         }
         #endregion
+
+        #region Product
         public ActionResult Product()
         {
             return Session["admin"] == null ? View("Login") : View();
         }
+
+
+        #endregion
         public ActionResult Error404()
         {
             return View();

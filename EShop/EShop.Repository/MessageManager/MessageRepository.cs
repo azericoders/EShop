@@ -41,12 +41,15 @@ namespace EShop.Repository.MessageManager
 
         public Message DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var message = _context.Messages.Find(id);
+            message.IsDelete = true;
+            SaveChanges();
+            return message;
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

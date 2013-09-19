@@ -20,15 +20,15 @@ namespace EShop.Repository.ProductManager
 
         public IQueryable<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Products;
         }
 
         public Product GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Products.Find(id);
         }
 
-        public void Save(Product company)
+        public void Save(Product product)
         {
             throw new NotImplementedException();
         }
@@ -40,12 +40,15 @@ namespace EShop.Repository.ProductManager
 
         public Product DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var product = _context.Products.Find(id);
+            product.IsDelete = true;
+            SaveChanges();
+            return product;
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
