@@ -31,31 +31,34 @@ namespace EShop.Web
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EShopDbContext>());
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
-            using (EShopDbContext context = new EShopDbContext())
-            {
-                var ur = context.Users.Count();
-                if (ur == 0)
-                {
 
-                    var user1 = new User()
-                         {
-                             LoginName = "Elvin",
-                             Password = "123",
-                             Email = "elvin.arzumanoglu@gmail.com",
-                             Position = PositionEnum.Admin,
-                             Status = StatusEnum.Active
-                         };
-                    var user2 = new User()
-                         {
-                             LoginName = "Zamir",
-                             Password = "123",
-                             Email = "zamirmmmm@gmail.com",
-                             Position = PositionEnum.Admin,
-                             Status = StatusEnum.Active
-                         };
-                    context.Users.Add(user1);
-                    context.Users.Add(user2);
-                    context.SaveChanges();
+            using (var context = new EShopDbContext())
+            {
+                
+                    var ur = context.Users.Count();
+                    if (ur == 0)
+                    {
+
+                        var user1 = new User()
+                            {
+                                LoginName = "Elvin",
+                                Password = "123",
+                                Email = "elvin.arzumanoglu@gmail.com",
+                                Position = PositionEnum.Admin,
+                                Status = StatusEnum.Active
+                            };
+                        var user2 = new User()
+                            {
+                                LoginName = "Zamir",
+                                Password = "123",
+                                Email = "zamirmmmm@gmail.com",
+                                Position = PositionEnum.Admin,
+                                Status = StatusEnum.Active
+                            };
+                        context.Users.Add(user1);
+                        context.Users.Add(user2);
+                        context.SaveChanges();
+                    
                 }
             }
         }

@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>CreateNew</h2>
+<h2>Yeni istifadəçi yarat</h2>
+<br/>
 
 @using (Html.BeginForm())
 {
@@ -13,7 +14,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>User</legend>
+      
 
         <div class="editor-label">
             @Html.LabelFor(model => model.LoginName)
@@ -47,7 +48,7 @@
             @Html.ValidationMessageFor(model => model.Email)
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Təsdiqlə" />
         </p>
     </fieldset>
 }
