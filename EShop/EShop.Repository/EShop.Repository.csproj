@@ -55,6 +55,8 @@
     <Compile Include="OrderManager\OrderRepository.cs" />
     <Compile Include="ProductManager\IProductRepository.cs" />
     <Compile Include="ProductManager\ProductRepository.cs" />
+    <Compile Include="ProductPhotoManager\IProductPhotoRepository.cs" />
+    <Compile Include="ProductPhotoManager\ProductPhotoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManager\IUserRepository.cs" />
     <Compile Include="UserManager\UserRepository.cs" />

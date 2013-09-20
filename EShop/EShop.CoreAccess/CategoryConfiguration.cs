@@ -11,7 +11,7 @@ namespace EShop.CoreAccess
         {
             HasKey(category => category.CategoryId);
             Property(category => category.CategoryId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            HasRequired(category => category.MainCategory)
+            HasOptional(category => category.MainCategory)
                 .WithMany(category => category.ChildCategories)
                 .HasForeignKey(category => category.MainCategoryId);
         }

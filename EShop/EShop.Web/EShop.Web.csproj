@@ -130,9 +130,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateProductViewModel.cs" />
     <Compile Include="Models\CreateUserModelView.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\OrderStatusViewModel.cs" />
+    <Compile Include="Models\SampleData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,10 @@
     <Content Include="Content\admin\opa-icons.css" />
     <Content Include="Content\admin\uniform.default.css" />
     <Content Include="Content\admin\uploadify.css" />
+    <Content Include="Content\Dropzone\css\basic.css" />
+    <Content Include="Content\Dropzone\css\dropzone.css" />
+    <Content Include="Content\Dropzone\images\spritemap%402x.png" />
+    <Content Include="Content\Dropzone\images\spritemap.png" />
     <Content Include="Content\images\admin\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="Content\images\admin\ajax-loaders\ajax-loader-2.gif" />
     <Content Include="Content\images\admin\ajax-loaders\ajax-loader-3.gif" />
@@ -363,6 +369,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Dropzone\css\stylus\basic.styl" />
+    <Content Include="Content\Dropzone\css\stylus\dropzone.styl" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -392,6 +400,10 @@
     <Content Include="Scripts\libryjs\bootstrap-transition.js" />
     <Content Include="Scripts\libryjs\bootstrap-typeahead.js" />
     <Content Include="Scripts\libryjs\charisma.js" />
+    <Content Include="Scripts\libryjs\Dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\libryjs\Dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\libryjs\Dropzone\dropzone.js" />
+    <Content Include="Scripts\libryjs\Dropzone\dropzone.min.js" />
     <Content Include="Scripts\libryjs\excanvas.js" />
     <Content Include="Scripts\libryjs\fullcalendar.min.js" />
     <Content Include="Scripts\libryjs\jquery-1.7.2.min.js" />
@@ -448,6 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\admin\ProductImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

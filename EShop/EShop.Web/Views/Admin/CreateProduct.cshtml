@@ -1,4 +1,4 @@
-﻿@model EShop.Core.Product
+﻿@model EShop.Web.Models.CreateProductViewModel
 
 @{
     ViewBag.Title = "CreateNewProduct";
@@ -7,153 +7,169 @@
 
 
 <div class="box-content">
-    @using (Html.BeginForm())
+    <div class="control-group">
+
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+
+            Mal üçün 4 şəkil seç<br />
+            <strong>Qeyd:</strong> birinci şəkil kiçildilmiş olaraq istifadə ediləcək
+        </div>
+        <div class="controls">
+            <form action="~/Admin/SaveUploadedFile" method="post"
+                enctype="multipart/form-data" class="dropzone"
+                id="dropzoneForm" style="width: 680px">
+            </form>
+        </div>
+    </div>
+    @using (Html.BeginForm("CreateProduct", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <legend>Product</legend>
+            <legend>Yeni malın daxil edilməsi.</legend>
+            <div class="control-group">
+                @Html.LabelFor(model => model.ProductNumber, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ProductNumber)
+                <div class="controls">
+                    @Html.EditorFor(model => model.ProductNumber)
+                    @Html.ValidationMessageFor(model => model.ProductNumber)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.ProductNumber)
-                @Html.ValidationMessageFor(model => model.ProductNumber)
-            </div>
+            <div class="control-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Name)
+                <div class="controls">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
+            <div class="control-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Description)
+                <div class="controls">
+                    @Html.TextAreaFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Description)
-                @Html.ValidationMessageFor(model => model.Description)
-            </div>
+            <div class="control-group">
+                @Html.LabelFor(model => model.Count, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Count)
+                <div class="controls">
+                    @Html.EditorFor(model => model.Count)
+                    @Html.ValidationMessageFor(model => model.Count)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Count)
-                @Html.ValidationMessageFor(model => model.Count)
-            </div>
-
-            <div class="editor-label">
+            @*  <div class="control-group">
                 @Html.LabelFor(model => model.SoldCount)
             </div>
-            <div class="editor-field">
+            <div class="controls">
                 @Html.EditorFor(model => model.SoldCount)
                 @Html.ValidationMessageFor(model => model.SoldCount)
             </div>
 
-            <div class="editor-label">
+            <div class="control-group">
                 @Html.LabelFor(model => model.RestCount)
             </div>
-            <div class="editor-field">
+            <div class="controls">
                 @Html.EditorFor(model => model.RestCount)
                 @Html.ValidationMessageFor(model => model.RestCount)
+            </div>*@
+
+            <div class="control-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label" })
+
+                <div class="controls">
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Price)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Price)
-                @Html.ValidationMessageFor(model => model.Price)
-            </div>
+            <div class="control-group">
+                @Html.LabelFor(model => model.PriceOfBuying, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PriceOfBuying)
+                <div class="controls">
+                    @Html.EditorFor(model => model.PriceOfBuying)
+                    @Html.ValidationMessageFor(model => model.PriceOfBuying)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.PriceOfBuying)
-                @Html.ValidationMessageFor(model => model.PriceOfBuying)
-            </div>
+            @*   <div class="control-group">
+                @Html.LabelFor(model => model.ProductInfo, new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ProductInfo)
+                <div class="controls">
+                    @Html.EditorFor(model => model.ProductInfo)
+                    @Html.ValidationMessageFor(model => model.ProductInfo)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.ProductInfo)
-                @Html.ValidationMessageFor(model => model.ProductInfo)
-            </div>
-
-            @* <div class="editor-label">
+             <div class="control-group">
             @Html.LabelFor(model => model.AddingDate)
         </div>
-      <div class="editor-label">
+      <div class="control-group">
             @Html.LabelFor(model => model.Image)
         </div>
-        <div class="editor-field">
+        <div class="controls">
             @Html.EditorFor(model => model.Image)
             @Html.ValidationMessageFor(model => model.Image)
         </div>
 
-        <div class="editor-label">
+        <div class="control-group">
             @Html.LabelFor(model => model.Image2)
         </div>
-        <div class="editor-field">
+        <div class="controls">
             @Html.EditorFor(model => model.Image2)
             @Html.ValidationMessageFor(model => model.Image2)
         </div>
 
-        <div class="editor-label">
+        <div class="control-group">
             @Html.LabelFor(model => model.Image3)
         </div>
-        <div class="editor-field">
+        <div class="controls">
             @Html.EditorFor(model => model.Image3)
             @Html.ValidationMessageFor(model => model.Image3)
         </div>
 
-       <div class="editor-label">
+       <div class="control-group">
             @Html.LabelFor(model => model.ThumbnialImage)
         </div>
-        <div class="editor-field">
+        <div class="controls">
             @Html.EditorFor(model => model.ThumbnialImage)
             @Html.ValidationMessageFor(model => model.ThumbnialImage)
         </div>
 
-        <div class="editor-label">
+        <div class="control-group">
             @Html.LabelFor(model => model.IsDelete)
         </div>
-        <div class="editor-field">
+        <div class="controls">
             @Html.EditorFor(model => model.IsDelete)
             @Html.ValidationMessageFor(model => model.IsDelete)
         </div>*@
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Category)
-            </div>
-            <div class="editor-field">
-                @Html.DropDownList("categoryList", String.Empty)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Category)
-            </div>
-            <div class="editor-field">
-                @Html.DropDownListFor(model => model.CategoryId, ViewData["subcategoryList"] as SelectList)
-                @Html.ValidationMessageFor(model => model.CategoryId)
-            </div>
+            <div class="control-group">
+                @Html.Label("Kateqoriya", new { @class = "control-label" })
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Company)
+                <div class="controls">
+                    @Html.DropDownList("categoryList", String.Empty)
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.DropDownListFor(model => model.CompanyId, ViewData["companyList"] as SelectList)
-                @Html.ValidationMessageFor(model => model.CompanyId)
-            </div>
+            <div class="control-group">
+                @Html.Label("Alt kateqoriya", new { @class = "control-label" })
 
-            <p>
-                <input type="submit" value="Create" />
-            </p>
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.CategoryId, ViewData["subcategoryList"] as SelectList)
+                    @Html.ValidationMessageFor(model => model.CategoryId)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("Şirkət", new { @class = "control-label" })
+
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.CompanyId, ViewData["companyList"] as SelectList)
+                    @Html.ValidationMessageFor(model => model.CompanyId)
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Yaddaşa yaz</button>
+            </div>
         </fieldset>
     }
 </div>

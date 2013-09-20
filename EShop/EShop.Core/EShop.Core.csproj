@@ -51,6 +51,7 @@
     <Compile Include="OrderLine.cs" />
     <Compile Include="PositionEnum.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductPhoto.cs" />
     <Compile Include="ShippingDetail.cs" />
     <Compile Include="StatusEnum.cs" />
     <Compile Include="User.cs" />

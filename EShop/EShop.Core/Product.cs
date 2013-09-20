@@ -33,6 +33,8 @@ namespace EShop.Core
 
         public decimal PriceOfBuying { get; set; }
 
+        public string ThumbnailPhoto { get; set; }
+
         public string ProductInfo { get; set; }
 
         public DateTime AddingDate { get; set; }
@@ -49,19 +51,5 @@ namespace EShop.Core
         public virtual ICollection<OrderLine> OrderLines { get; set; }
 
         public virtual ICollection<ProductPhoto> ProductPhotos { get; set; }
-    }
-
-    public class ProductPhoto
-    {
-        public Guid ProductPhotoId { get; set; }
-
-        public string Photo { get; set; }
-
-        public string ThumbnailPhoto { get; set; }
-
-        // Fields for relationships
-
-        public Guid ProductId { get; set; }
-        public Product Product { get; set; }
     }
 }

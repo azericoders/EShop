@@ -10,6 +10,7 @@ using EShop.Repository.MessageManager;
 using EShop.Repository.OrderLineManager;
 using EShop.Repository.OrderManager;
 using EShop.Repository.ProductManager;
+using EShop.Repository.ProductPhotoManager;
 using EShop.Repository.UserManager;
 using Ninject;
 using System.Web.Mvc;
@@ -47,6 +48,7 @@ namespace EShop.Infrastructure
             ninjectKernel.Bind<IProductRepository>().To<ProductRepository>();
             ninjectKernel.Bind<IUserRepository>().To<UserRepository>();
             ninjectKernel.Bind<IMessageRepository>().To<MessageRepository>();
+            ninjectKernel.Bind<IProductPhotoRepository>().To<ProductPhotoRepository>();
         }
     }
 }
