@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EShop.Core
 {
     public class Product
     {
+        public Product()
+        {
+            AddingDate = DateTime.Now;
+        }
         //<Summary>
         //Fields...
         //</Summary>
@@ -22,17 +27,15 @@ namespace EShop.Core
 
         public int RestCount { get; set; }
 
+        public int Returned { get; set; }
+
         public decimal Price { get; set; }
 
         public decimal PriceOfBuying { get; set; }
 
-        public string Image { get; set; }
+        public string ProductInfo { get; set; }
 
-        public string Image2 { get; set; }
-
-        public string Image3 { get; set; }
-
-        public string ThumbnialImage { get; set; }
+        public DateTime AddingDate { get; set; }
 
         public bool IsDelete { get; set; }
 
@@ -42,5 +45,23 @@ namespace EShop.Core
 
         public Guid CompanyId { get; set; }
         public virtual Company Company { get; set; }
+
+        public virtual ICollection<OrderLine> OrderLines { get; set; }
+
+        public virtual ICollection<ProductPhoto> ProductPhotos { get; set; }
+    }
+
+    public class ProductPhoto
+    {
+        public Guid ProductPhotoId { get; set; }
+
+        public string Photo { get; set; }
+
+        public string ThumbnailPhoto { get; set; }
+
+        // Fields for relationships
+
+        public Guid ProductId { get; set; }
+        public Product Product { get; set; }
     }
 }

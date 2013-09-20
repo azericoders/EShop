@@ -9,5 +9,7 @@ namespace EShop.Repository.CategoryManager
 {
     public interface ICategoryRepository : IRepository<Category>
     {
+        IQueryable<Category> GetAllMainCategory();
+        IQueryable<Category> GetAllChildCategory();
     }
 }

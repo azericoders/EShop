@@ -20,7 +20,17 @@ namespace EShop.Repository.CategoryManager
 
         public IQueryable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Categories;
+        }
+
+        public IQueryable<Category> GetAllMainCategory()
+        {
+            return _context.Categories;
+        }
+
+        public IQueryable<Category> GetAllChildCategory()
+        {
+            return _context.Categories;
         }
 
         public Category GetById(Guid id)
@@ -28,24 +38,30 @@ namespace EShop.Repository.CategoryManager
             throw new NotImplementedException();
         }
 
-        public void Save(Category company)
+        public void Save(Category category)
         {
-            throw new NotImplementedException();
+            _context.Categories.Add(category);
+            SaveChanges();
         }
 
-        public void Update(Category company)
+        public void Update(Category category)
         {
             throw new NotImplementedException();
         }
 
         public Category DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var category = _context.Categories.Find(id);
+            category.IsDelete = true;
+            SaveChanges();
+            return category;
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
+
+
     }
 }

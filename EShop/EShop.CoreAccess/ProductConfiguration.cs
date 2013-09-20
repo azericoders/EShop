@@ -10,6 +10,7 @@ namespace EShop.CoreAccess
         {
             HasKey(product => product.ProductId);
             Property(product => product.ProductId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            HasMany(product => product.ProductPhotos).WithRequired(photo => photo.Product);
         }
     }
 }

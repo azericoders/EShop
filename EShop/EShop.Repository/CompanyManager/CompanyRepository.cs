@@ -20,17 +20,20 @@ namespace EShop.Repository.CompanyManager
 
         public IQueryable<Company> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Companies;
         }
 
         public Company GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var company = _context.Companies.Find(id);
+            return company;
+
         }
 
         public void Save(Company company)
         {
-            throw new NotImplementedException();
+            _context.Companies.Add(company);
+            SaveChanges();
         }
 
         public void Update(Company company)
@@ -40,12 +43,15 @@ namespace EShop.Repository.CompanyManager
 
         public Company DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var company = _context.Companies.Find(id);
+            company.IsDelete = true;
+            SaveChanges();
+            return company;
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

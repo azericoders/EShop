@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Core;
+using EShop.Repository.CategoryManager;
+using EShop.Repository.CompanyManager;
 using EShop.Repository.MessageManager;
 using EShop.Repository.OrderManager;
+using EShop.Repository.ProductManager;
 using EShop.Repository.UserManager;
 using EShop.Web.Models;
 
@@ -15,13 +18,24 @@ namespace EShop.Web.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IOrderRepository _orderRepository;
-        private IMessageRepository _messageRepository;
+        private readonly IMessageRepository _messageRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICompanyRepository _companyRepository;
 
-        public AdminController(IUserRepository userRepository, IOrderRepository orderRepository, IMessageRepository messageRepository)
+        public AdminController(IUserRepository userRepository,
+            IOrderRepository orderRepository,
+            IMessageRepository messageRepository,
+            IProductRepository productRepository,
+            ICategoryRepository categoryRepository,
+            ICompanyRepository companyRepository)
         {
             this._userRepository = userRepository;
             this._orderRepository = orderRepository;
             this._messageRepository = messageRepository;
+            this._productRepository = productRepository;
+            this._categoryRepository = categoryRepository;
+            this._companyRepository = companyRepository;
         }
         //
         // GET: /Admin/
@@ -79,13 +93,13 @@ namespace EShop.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateNew()
+        public ActionResult CreateUser()
         {
-            return Session["admin"] == null ? View("Login") : View();
+            return Session["admin"] == null ? View("Login") : View("User");
         }
 
         [HttpPost]
-        public ActionResult CreateNewUser(RegisterViewModel model)
+        public ActionResult CreateUser(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -146,6 +160,31 @@ namespace EShop.Web.Controllers
             return Session["admin"] == null ? View("Login") : View();
         }
 
+        public ActionResult CreateProduct()
+        {
+            if (Session["admin"] == null)
+            {
+                return View("Login");
+            }
+
+            var companyList = new SelectList(_companyRepository.GetAll(), "CompanyId", "CategoryName");
+            var categoryList = new SelectList(_categoryRepository.GetAll().Where(category => category.CategoryId != category.MainCategoryId), "CategoryId", "CategoryName");
+
+            ViewData["companyList"] = companyList;
+            ViewData["subcategoryList"] = categoryList;
+            ViewData["categoryList"] = new SelectList(_categoryRepository.GetAll().Where(category => category.CategoryId == category.MainCategoryId), "CategoryId", "CategoryName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _productRepository.Save(product);
+            }
+            return View();
+        }
 
         #endregion
         public ActionResult Error404()

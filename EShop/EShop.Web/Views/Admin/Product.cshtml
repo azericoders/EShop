@@ -2,6 +2,9 @@
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<div>
+    <a href="@Url.Action("CreateProduct")" class="btn btn-info">Yeni mal əlavə et.</a>
+</div>
 <div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header well" data-original-title>
@@ -41,11 +44,11 @@
                         <td>IT</td>
 
                         <td class="center">
-                            <a href="#View" role="button" data-toggle="modal" id="ViewModal" class="btn btn-success">
+                            <a href="#" class="btn btn-success">
                                 <i class="icon-zoom-in icon-white"></i>
                                 Göstər                                            
                             </a>
-                            <a href="#Edit" role="button" data-toggle="modal" id="EditModal" class="btn btn-info">
+                            <a href="#"  class="btn btn-info">
                                 <i class="icon-edit icon-white"></i>
                                 Dəyiş                                            
                             </a>
@@ -63,7 +66,7 @@
 
 </div>
 <!--/row-->
-<div class="modal hide fade" id="View">
+@*<div class="modal hide fade" id="View">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>İstifadəçinin məlumatları</h3>
@@ -82,9 +85,9 @@
         <a href="#" class="btn" data-dismiss="modal">Bağla</a>
         <a href="#" class="btn btn-primary">Yadda saxla</a>
     </div>
-</div>
+</div>*@
 
-<div class="modal hide fade" id="Edit">
+@*<div class="modal hide fade" id="Edit">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>İstifadəçinin məlumatları</h3>
@@ -111,7 +114,7 @@
             <button class="btn btn-primary">Yadda saxla</button>
         </div>
     }
-</div>
+</div>*@
 
 <div class="modal hide fade" id="Delete">
     <div class="modal-header">

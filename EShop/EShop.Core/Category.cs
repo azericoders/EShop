@@ -14,6 +14,7 @@ namespace EShop.Core
         public string CategoryName { get; set; }
 
         public bool IsDelete { get; set; }
+
         // Fields for relationships
         public Guid MainCategoryId { get; set; }
         public Category MainCategory { get; set; }
